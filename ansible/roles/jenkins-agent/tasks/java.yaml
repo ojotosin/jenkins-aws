@@ -1,0 +1,23 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Fix broken packages
+  apt:
+    name: "*"
+    state: latest
+    force: yes
+
+- name: Add Ubuntu Focal repository
+  apt_repository:
+    repo: "deb http://archive.ubuntu.com/ubuntu focal main universe"
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install Java JDK 17
+  apt:
+    name: openjdk-17-jdk
+    state: present
